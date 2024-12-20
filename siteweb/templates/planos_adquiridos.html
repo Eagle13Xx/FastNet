@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Planos Adquiridos{% endblock %}
+
+{% block conteudo %}
+<div class="container py-5">
+    <h1 class="text-center mb-5">Seus Planos Adquiridos</h1>
+    <div class="row g-4">
+        {% for plano in planos %}
+        <div class="col-lg-4 col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-primary">{{ plano.plano.nome }}</h5>
+                    <p class="card-text text-muted">{{ plano.plano.descricao }}</p>
+                    <ul class="list-unstyled mb-3">
+                        <li><strong>Velocidade:</strong> {{ plano.plano.velocidade }}</li>
+                        <li><strong>Preço:</strong> R$ {{ plano.plano.preco }}</li>
+                    </ul>
+                    <p class="card-text"><small class="text-muted">Adquirido em {{ plano.data_adquirida|date:"d/m/Y H:i" }}</small></p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning text-center" role="alert">
+                Você ainda não possui planos adquiridos.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-5">
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg">Voltar</a>
+    </div>
+</div>
+    <br><br><br><br><br><br><br><br><br>
+{% endblock %}

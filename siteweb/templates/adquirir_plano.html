@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalhes do Plano{% endblock %}
+
+{% block conteudo %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <h1 class="card-title text-center text-uppercase fw-bold text-primary mb-4">{{ plano.nome }}</h1>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Velocidade:</strong>
+                            <span class="text-muted">{{ plano.velocidade }} Mbps</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Preço:</strong>
+                            <span class="text-muted">R$ {{ plano.preco }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Descrição:</strong>
+                            <p class="text-muted mt-3">{{ plano.descricao }}</p>
+                        </li>
+                    </ul>
+                    <div class="text-center mt-5">
+                        <form method="post" action="{% url 'adquirir_plano' plano.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg w-50">Escolher Plano</button>
+                        </form>
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg w-50 mt-3">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <br><br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}O melhor provedor de internet da cidade!{% endblock %}
+
+{% block contheader %}
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-black mb-2">
+                        Internet de mais alta qualidade da cidade, perfeita para todos os tipos de usuários
+                    </h1>
+                    <p class="lead fw-normal text-black mb-4">
+                        Nossa empresa foca em apresentar um produto de alta qualidade além de possuir preços super acessíveis.
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#planos">Conheça nossos planos</a>
+                        <a class="btn btn-dark btn-lg px-4" href="#sobre">Sobre a empresa</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                <img class="img-fluid rounded-3 my-5" src="{% static 'assets/pop.png' %}" alt="..." />
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block conteudo %}
+    {% include 'includes/sobreaempresa.html' %}
+    {% include 'includes/apresentacao.html' %}
+    {% include 'includes/planos.html' %}
+
+{% endblock %}
+
