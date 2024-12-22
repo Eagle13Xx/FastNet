@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from FastNet import settings
 
 
-# Modelo de Plano
+
 class Plano(models.Model):
     nome = models.CharField(max_length=50)
     descricao = models.TextField()

@@ -133,4 +133,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'home'
-LOGIN_URL = '/usuario/login/'  # Substitua pelo caminho correto da sua página de login
+LOGIN_URL = '/usuario/login/'

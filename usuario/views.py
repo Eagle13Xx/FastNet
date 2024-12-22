@@ -17,37 +17,31 @@ class CadastroUsuarioView(View):
         if form.is_valid():
             form.save()
             messages.success(request, 'Usuário cadastrado com sucesso!')
-            return redirect('loginuser')  # Alterar para a rota do login
+            return redirect('loginuser')
         else:
             messages.error(request, 'Erro ao cadastrar usuário. Verifique os dados.')
         return render(request, 'usuario/cadusuario.html', {'form': form})
 
 class LoginUsuarioView(View):
     def get(self, request):
-        # Renderiza o formulário de login
         return render(request, 'usuario/login.html')
 
     def post(self, request):
-        # Coleta os dados do formulário
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Autentica o usuário
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            # Login bem-sucedido
             login(request, user)
             messages.success(request, 'Login realizado com sucesso!')
-            return redirect('/')  # Altere para a rota desejada após login
+            return redirect('/')
         else:
-            # Login falhou
             messages.error(request, 'Nome de usuário ou senha inválidos.')
             return render(request, 'usuario/login.html')
 
 class LogoutUsuarioView(View):
     def get(self, request):
-        # Faz o logout do usuário
         logout(request)
         messages.success(request, 'Você saiu da sua conta.')
         return redirect('home')
